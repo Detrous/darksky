@@ -23,6 +23,9 @@ jobs:
     steps:
       - checkout
       - run:
+          command: |
+            python3 -m venv venv
+      - run:
           name: init .pypirc
           command: |
             echo -e "[distutils]" >> ~/.pypirc

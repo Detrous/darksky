@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 setup(
     version=__version__,
@@ -11,9 +11,9 @@ setup(
         'requests==2.21.0'
     ],
 
-    description='Onelya Python SDK',
+    description='The Dark Sky API wrapper',
 
-    author='The Dark Sky API wrapper',
+    author='Detrous',
     author_email='detrous@protonmail.com',
 
     url='https://github.com/Detrous/darksky_weather',

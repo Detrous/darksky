@@ -1,0 +1,5 @@
+AUTO = 'auto'
+CA = 'ca'
+UK2 = 'uk2'
+US = 'us'
+SU = 'si'

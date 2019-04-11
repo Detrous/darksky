@@ -1,4 +1,4 @@
-darksky
+DarkSky [![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/master.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/master)
 ==========
 
 This  library for the [Dark Sky

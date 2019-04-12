@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-__version__ = '1.1.3'
+__version__ = '1.1.4'
 
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'README.md')) as f:
     README = f.read()
@@ -25,7 +25,7 @@ setup(
     url='https://github.com/Detrous/darksky_weather',
     download_url='https://github.com/Detrous/darksky_weather/archive/%s.tar.gz' % __version__,
 
-    license='MIT License',
+    license='GPLv3 License',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',

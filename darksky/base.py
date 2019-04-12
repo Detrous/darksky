@@ -21,7 +21,7 @@ class AutoInit(object):
         fields = [key for key in self.__annotations__]
         for field in fields:
             api_field = undo_snake_case_key(field)
-            if isinstance(self.__annotations__[field], datetime):
+            if self.__annotations__[field] == datetime:
                 params[api_field] = get_datetime_from_unix(params[api_field])
 
             if api_field in params:

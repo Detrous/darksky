@@ -136,7 +136,7 @@ class Forecast(object):
 
     def __init__(self, latitude: float, longitude: float, timezone: str,
         currently: dict={}, minutely: dict={}, hourly: dict={},
-        daily: dict={}, alerts: [dict]=None, flags: [str]=None):
+        daily: dict={}, alerts: [dict]=None, flags: [str]=None, offset: int=None):
         self.latitude = latitude
         self.longitude = longitude
         self.timezone = timezone
@@ -148,3 +148,5 @@ class Forecast(object):
 
         alerts = alerts or []
         self.alerts = [Alert(**item) for item in alerts]
+
+        self.offset = offset

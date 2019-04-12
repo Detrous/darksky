@@ -8,12 +8,12 @@ class BaseWeather(object):
     icon: str
     data_class: object
 
-    def __init__(self, summary, icon, data):
+    def __init__(self, summary=None, icon=None, data=None):
         self.summary = summary
         self.icon = icon
 
         assert self.data_class is not None
-        self.data = [self.data_class(**item) for item in data]
+        self.data = [self.data_class(**item) for item in (data or [])]
 
 
 class AutoInit(object):

@@ -22,7 +22,7 @@ class AutoInit(object):
         for field in fields:
             api_field = undo_snake_case_key(field)
             if self.__annotations__[field] == datetime:
-                params[api_field] = get_datetime_from_unix(params[api_field])
+                params[api_field] = get_datetime_from_unix(params.get(api_field))
 
             if api_field in params:
                 setattr(self, field, params.get(api_field))

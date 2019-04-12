@@ -73,42 +73,42 @@ class DailyForecastItem(base.AutoInit):
     time: datetime
     summary: str
     icon: str
-    sunrise_time: int
-    sunset_time: int
+    sunrise_time: datetime
+    sunset_time: datetime
     moon_phase: float
     precip_intensity: float
     precip_intensity_max: float
-    precip_intensity_max_time: int
+    precip_intensity_max_time: datetime
     precip_probability: float
     precip_type: str
     temperature_high: float
-    temperature_high_time: int
+    temperature_high_time: datetime
     temperature_low: float
-    temperature_low_time: int
+    temperature_low_time: datetime
     apparent_temperature_high: float
-    apparent_temperature_high_time: int
+    apparent_temperature_high_time: datetime
     apparent_temperature_low: float
-    apparent_temperature_low_time: int
+    apparent_temperature_low_time: datetime
     dew_point: float
     humidity: float
     pressure: float
     wind_speed: float
     wind_gust: float
-    wind_gust_time: int
+    wind_gust_time: datetime
     wind_bearing: int
     cloud_cover: float
     uv_index: int
-    uv_index_time: int
+    uv_index_time: datetime
     visibility: int
     ozone: float
     temperature_min: float
-    temperature_min_time: int
+    temperature_min_time: datetime
     temperature_max: float
-    temperature_max_time: int
+    temperature_max_time: datetime
     apparent_temperature_min: float
-    apparent_temperature_min_time: int
+    apparent_temperature_min_time: datetime
     apparent_temperature_max: float
-    apparent_temperature_max_time: int
+    apparent_temperature_max_time: datetime
 
 
 class DailyForecast(base.BaseWeather):

@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-__version__ = '1.1.4'
+__version__ = '1.1.5'
 
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'README.md')) as f:
     README = f.read()
@@ -13,7 +13,8 @@ setup(
     packages=find_packages(),
 
     install_requires=[
-        'requests==2.21.0'
+        'requests==2.21.0',
+        'pytz==2019.1'
     ],
 
     description='The Dark Sky API wrapper',

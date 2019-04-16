@@ -9,7 +9,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install requests mock pytest
+            pip install requests==2.21.0 pytz==2019.1 mock pytest
       - run:
           command: |
             . venv/bin/activate

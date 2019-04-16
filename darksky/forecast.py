@@ -141,12 +141,16 @@ class Forecast(object):
         self.longitude = longitude
         self.timezone = timezone
 
-        self.currently = CurrentlyForecast(**currently)
-        self.minutely = MinutelyForecast(**minutely)
-        self.hourly = HourlyForecast(**hourly)
-        self.daily = DailyForecast(**daily)
+        self.currently = CurrentlyForecast(timezone=timezone, **currently)
+        self.minutely = MinutelyForecast(timezone=timezone, **minutely)
+        self.hourly = HourlyForecast(timezone=timezone, **hourly)
+        self.daily = DailyForecast(timezone=timezone, **daily)
 
-        alerts = alerts or []
-        self.alerts = [Alert(**item) for item in alerts]
+        self.alerts = []
+        for item in (alerts or []):
+            item['timezone'] = timezone
+            self.alerts.append(
+                Alert(**item)
+            )
 
         self.offset = offset

@@ -1,4 +1,5 @@
 import mock
+import copy
 
 from .data import DATA
 
@@ -13,4 +14,4 @@ class MockSession(object):
         return self
 
     def json(self):
-        return DATA
+        return copy.deepcopy(DATA)

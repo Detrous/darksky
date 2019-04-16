@@ -25,7 +25,7 @@ def test_undo_snake_case_key_bad_value_type():
 
 def test_base_weather():
     class TestDataBaseWeather(object):
-        def __init__(self, test_field):
+        def __init__(self, test_field, **kwargs):
             self.test_field = test_field
 
     class TestBaseWeather(BaseWeather):

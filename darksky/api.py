@@ -44,7 +44,7 @@ class DarkSky(object):
                 longitude=longitude
             )
         else: 
-            url += '{host}/{api_key}/{latitude},{longitude},{time}'.format(
+            url = '{host}/{api_key}/{latitude},{longitude},{time}'.format(
                 api_key=self.api_key,
                 host=self.HOST,
                 latitude=latitude,

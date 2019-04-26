@@ -28,7 +28,7 @@ class DarkSky(object):
         self, latitude: float, longitude: float, time: datetime, extend: bool=False, 
         lang=languages.ENGLISH, units=units.AUTO, exclude: [weather]=None):
         return self.__get_forecast(
-            latitude, longitude, time.timestamp(),
+            latitude, longitude, int(time.timestamp()),
             extend=weather.HOURLY if extend else None, 
             lang=lang, 
             units=units,

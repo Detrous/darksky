@@ -2,6 +2,7 @@ import requests
 from datetime import datetime
 
 from .forecast import Forecast
+from .exceptions import DarkSkyException
 from .types import languages, units, weather
 
 
@@ -62,4 +63,7 @@ class RequestManger(object):
             self.session.headers['Accept-Encoding'] = 'gzip'
 
     def make_request(self, url: str, **params):
-        return self.session.get(url, params=params).json()
+        response = self.session.get(url, params=params).json()
+        if 'error' in response:
+            raise DarkSkyException(response['code'], response['error'])
+        return response

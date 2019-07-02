@@ -46,11 +46,11 @@ forecast.latitude # 42.3601
 forecast.longitude # -71.0589
 forecast.timezone # timezone for coordinates. For exmaple: `America/New_York`
 
-forecast.currently # CurrentlyForecast. Can be finded at darksky/forecast.py
-forecast.minutely # MinutelyForecast. Can be finded at darksky/forecast.py
-forecast.hourly # HourlyForecast. Can be finded at darksky/forecast.py
-forecast.daily # DailyForecast. Can be finded at darksky/forecast.py
-forecast.alerts # [Alert]. Can be finded at darksky/forecast.py
+forecast.currently # CurrentlyForecast. Can be found at darksky/forecast.py
+forecast.minutely # MinutelyForecast. Can be found at darksky/forecast.py
+forecast.hourly # HourlyForecast. Can be found at darksky/forecast.py
+forecast.daily # DailyForecast. Can be found at darksky/forecast.py
+forecast.alerts # [Alert]. Can be found at darksky/forecast.py
 ```
 
 ### Contact us.

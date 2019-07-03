@@ -51,6 +51,9 @@ forecast.minutely # MinutelyForecast. Can be found at darksky/forecast.py
 forecast.hourly # HourlyForecast. Can be found at darksky/forecast.py
 forecast.daily # DailyForecast. Can be found at darksky/forecast.py
 forecast.alerts # [Alert]. Can be found at darksky/forecast.py
+
+# Forecast updating
+forecast.refresh()
 ```
 
 ### Contact us.

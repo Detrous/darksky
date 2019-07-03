@@ -133,10 +133,12 @@ class Forecast(object):
     hourly: HourlyForecast
     daily: DailyForecast
     alerts: List[Alert]
+    offset: int
 
     def __init__(self, latitude: float, longitude: float, timezone: str,
         currently: dict={}, minutely: dict={}, hourly: dict={},
-        daily: dict={}, alerts: [dict]=None, flags: [str]=None, offset: int=None):
+        daily: dict={}, alerts: [dict]=None, flags: [str]=None, offset: int=None, 
+        refresh_data=None):
         self.latitude = latitude
         self.longitude = longitude
         self.timezone = timezone
@@ -154,3 +156,10 @@ class Forecast(object):
             )
 
         self.offset = offset
+
+        self.refresh_data = refresh_data
+    
+    def refresh(self):
+        forecast = self.refresh_data['func'](**self.refresh_data['kwargs'])
+        for field in self.__class__.__annotations__:
+            setattr(self, field, getattr(forecast, field))

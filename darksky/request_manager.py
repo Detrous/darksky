@@ -25,13 +25,18 @@ class RequestManger(BaseRequestManger):
 
 
 class RequestMangerAsync(BaseRequestManger):
+    def __init__(self, gzip: bool, client_session: aiohttp.ClientSession = None):
+        super().__init__(gzip)
+        assert isinstance(client_session, aiohttp.ClientSession) or client_session is None
+        self.session = aiohttp.ClientSession() if client_session is None else client_session
+
     async def make_request(self, url: str, **params):
         # Fix for yarl(Doesn't support any types besides str)
         for key in params.copy():
             if params[key] is None:
                 del params[key]
             
-        async with aiohttp.ClientSession().get(url, params=params, headers=self.headers) as resp:
+        async with self.session.get(url, params=params, headers=self.headers) as resp:
             response = await resp.json()
             if 'error' in response:
                 raise DarkSkyException(response['code'], response['error'])

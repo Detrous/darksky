@@ -1,4 +1,5 @@
 import requests
+import aiohttp
 from datetime import datetime
 
 from .forecast import Forecast
@@ -10,11 +11,9 @@ from .request_manager import BaseRequestManger, RequestManger, RequestMangerAsyn
 class BaseDarkSky(object):
     HOST = 'https://api.darksky.net/forecast'
 
-    request_manager_class = BaseRequestManger
-
-    def __init__(self, api_key, gzip: bool=True):
-        self.api_key = api_key
-        self.request_manager = self.request_manager_class(gzip)
+    def __init__(self, api_key: str):
+        self.api_key: str = api_key
+        self.request_manager: BaseRequestManger = None
 
     def get_forecast(self, 
         latitude: float, longitude: float, extend: bool=None, lang=languages.ENGLISH, 
@@ -45,9 +44,10 @@ class BaseDarkSky(object):
 
 
 class DarkSky(BaseDarkSky):
-    HOST = 'https://api.darksky.net/forecast'
 
-    request_manager_class = RequestManger
+    def __init__(self, api_key: str, gzip: bool = True):
+        super().__init__(api_key)
+        self.request_manager = RequestManger(gzip)
 
     def get_forecast(self, 
         latitude: float, longitude: float, extend: bool=None, lang=languages.ENGLISH, 
@@ -77,9 +77,10 @@ class DarkSky(BaseDarkSky):
 
 
 class DarkSkyAsync(BaseDarkSky):
-    HOST = 'https://api.darksky.net/forecast'
 
-    request_manager_class = RequestMangerAsync
+    def __init__(self, api_key: str, gzip: bool = True, client_session: aiohttp.ClientSession = None):
+        super().__init__(api_key)
+        self.request_manager = RequestMangerAsync(gzip=gzip, client_session=client_session)
 
     async def get_forecast(self, 
         latitude: float, longitude: float, extend: bool=None, lang=languages.ENGLISH, 

@@ -14,7 +14,8 @@ setup(
 
     install_requires=[
         'requests==2.21.0',
-        'pytz==2019.1'
+        'pytz==2019.1',
+        'aiohttp==3.5.4'
     ],
 
     description='The Dark Sky API wrapper',

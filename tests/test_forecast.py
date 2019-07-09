@@ -41,18 +41,6 @@ def test_forecast_currently():
         assert getattr(forecast_item, forecast_key) == data_item[key]
 
 
-def test_forecast_currently_refresh():
-    forecast = get_forecast()
-
-    forecast_item, data_item = forecast.currently, copy.deepcopy(DATA['currently'])
-    for key in data_item:
-        forecast_key = utils.snake_case_key(key)
-        if isinstance(getattr(forecast_item, forecast_key), datetime):
-            data_item[key] = get_datetime_from_unix(data_item[key])
-        assert hasattr(forecast_item, forecast_key)
-        assert getattr(forecast_item, forecast_key) == data_item[key]
-
-
 def test_forecast_minutely():
     forecast = get_forecast()
 

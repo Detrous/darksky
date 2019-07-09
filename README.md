@@ -24,12 +24,13 @@ Before you start using this library, you need to get your API key
 All classes are fully annotated, source code it's your best doc : )
 
 ```python
-from darksky.api import DarkSky
+from darksky.api import DarkSky, DarkSkyAsync
 from darksky.types import languages, units, weather
 
 
 API_KEY = '0123456789abcdef9876543210fedcba'
 
+# Synchronous way
 darksky = DarkSky(API_KEY)
 
 latitude = 42.3601
@@ -42,6 +43,20 @@ forecast = darksky.get_forecast(
     exclude=[weather.MINUTELY, weather.ALERTS] # default `[]`
 )
 
+# Asynchronous way
+darksky = DarkSkyAsync(API_KEY)
+
+latitude = 42.3601
+longitude = -71.0589
+forecast = await darksky.get_forecast(
+    latitude, longitude,
+    extend=False, # default `False`
+    lang=languages.ENGLISH, # default `ENGLISH`
+    units=units.AUTO, # default `auto`
+    exclude=[weather.MINUTELY, weather.ALERTS] # default `[]`
+)
+
+# Final wrapper identical for both ways
 forecast.latitude # 42.3601
 forecast.longitude # -71.0589
 forecast.timezone # timezone for coordinates. For exmaple: `America/New_York`

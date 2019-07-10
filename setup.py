@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-__version__ = '1.2.0'
+__version__ = '1.3.0'
 
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'README.md')) as f:
     README = f.read()
@@ -14,7 +14,8 @@ setup(
 
     install_requires=[
         'requests==2.21.0',
-        'pytz==2019.1'
+        'pytz==2019.1',
+        'aiohttp==3.5.4'
     ],
 
     description='The Dark Sky API wrapper',

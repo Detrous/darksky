@@ -19,7 +19,7 @@ setup(
     ],
 
     description='The Dark Sky API wrapper',
-    long_description=README,
+    long_description='View on github',
 
     author='Detrous',
     author_email='detrous@protonmail.com',

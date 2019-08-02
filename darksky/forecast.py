@@ -33,7 +33,6 @@ class MinutelyForecastItem(base.AutoInit):
     time: datetime
     precip_intensity: float
     precip_intensity_error: float
-    precip_intensity_probability: float
     precip_probability: float
     precip_type: str
 

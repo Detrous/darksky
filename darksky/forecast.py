@@ -33,7 +33,6 @@ class MinutelyForecastItem(base.AutoInit):
     time: datetime
     precip_intensity: float
     precip_intensity_error: float
-    precip_intensity_probability: float
     precip_probability: float
     precip_type: str
 
@@ -123,6 +122,12 @@ class Alert(base.AutoInit):
     description: str
     uri: str
 
+class Flags(base.AutoInit):
+    sources: List[str]
+    sources_class = str
+    nearest__station: float
+    units: str
+
 
 class Forecast(object):
     latitude: float
@@ -133,11 +138,12 @@ class Forecast(object):
     hourly: HourlyForecast
     daily: DailyForecast
     alerts: List[Alert]
+    flags: Flags
     offset: int
 
     def __init__(self, latitude: float, longitude: float, timezone: str,
         currently: dict={}, minutely: dict={}, hourly: dict={},
-        daily: dict={}, alerts: [dict]=None, flags: [str]=None, offset: int=None):
+        daily: dict={}, alerts: [dict]=None, flags: dict={}, offset: int=None):
         self.latitude = latitude
         self.longitude = longitude
         self.timezone = timezone
@@ -153,5 +159,7 @@ class Forecast(object):
             self.alerts.append(
                 Alert(**item)
             )
+
+        self.flags = Flags(timezone=timezone, **flags)
 
         self.offset = offset

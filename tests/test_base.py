@@ -48,3 +48,13 @@ def test_auto_init():
 
     test_auto_init_obj = TestAutoInit(field='data')
     assert test_auto_init_obj.field == 'data'
+
+
+def test_auto_init__field_exists_on_class_but_is_not_given_in_constructor__defaults_to_none():
+    class TestAutoInit(AutoInit):
+        field: str
+        other_field: int
+
+    test_auto_init_obj = TestAutoInit(field='data')
+    assert test_auto_init_obj.field == 'data'
+    assert test_auto_init_obj.other_field == None

@@ -118,6 +118,8 @@ class DailyForecast(base.BaseWeather):
 
 class Alert(base.AutoInit):
     title: str
+    regions: list
+    severity: str
     time: datetime
     expires: datetime
     description: str

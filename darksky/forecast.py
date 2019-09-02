@@ -11,6 +11,7 @@ class CurrentlyForecast(base.AutoInit):
     summary: str
     icon: str
     nearest_storm_distance: int
+    nearest_storm_bearing: int
     precip_intensity: float
     precip_intensity_error: float
     precip_probability: float
@@ -117,6 +118,8 @@ class DailyForecast(base.BaseWeather):
 
 class Alert(base.AutoInit):
     title: str
+    regions: list
+    severity: str
     time: datetime
     expires: datetime
     description: str

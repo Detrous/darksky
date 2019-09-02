@@ -37,3 +37,5 @@ class AutoInit(object):
 
             if api_field in params:
                 setattr(self, field, params.get(api_field))
+            else:
+                setattr(self, field, None)

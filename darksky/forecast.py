@@ -156,13 +156,7 @@ class Forecast(object):
         self.hourly = HourlyForecast(timezone=timezone, **hourly)
         self.daily = DailyForecast(timezone=timezone, **daily)
 
-        self.alerts = []
-        for item in (alerts or []):
-            item['timezone'] = timezone
-            self.alerts.append(
-                Alert(**item)
-            )
-
+        self.alerts = [Alert(timezone=timezone, **alert) for alert in (alerts or [])]
         self.flags = Flags(timezone=timezone, **flags)
 
         self.offset = offset

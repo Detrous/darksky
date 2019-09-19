@@ -11,6 +11,6 @@ def undo_snake_case_key(key: str) -> str:
 
 
 def get_datetime_from_unix(value: int, timezone: pytz.timezone=pytz.UTC) -> datetime:
-    if isinstance(value, int):
-        return datetime.fromtimestamp(value, tz=pytz.UTC).astimezone(timezone)
-    return None
+    if not isinstance(value, int):
+        return
+    return datetime.fromtimestamp(value, tz=pytz.UTC).astimezone(timezone)

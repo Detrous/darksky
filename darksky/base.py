@@ -14,12 +14,7 @@ class BaseWeather(object):
         self.icon = icon
 
         assert self.data_class is not None
-        self.data = []
-        for item in (data or []):
-            item['timezone'] = timezone
-            self.data.append(
-                self.data_class(**item)
-            )
+        self.data = [self.data_class(timezone=timezone, **item) for item in (data or [])]
 
 
 class AutoInit(object):

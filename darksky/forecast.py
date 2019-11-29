@@ -8,7 +8,7 @@ from .types import languages, units, weather
 
 class CurrentlyForecast(base.AutoInit):
     time: datetime
-    summary: str
+    summary: str = None
     icon: str
     nearest_storm_distance: int
     nearest_storm_bearing: int
@@ -45,7 +45,7 @@ class MinutelyForecast(base.BaseWeather):
 
 class HourlyForecastItem(base.AutoInit):
     time: datetime
-    summary: str
+    summary: str = None
     icon: str
     precip_intensity: float
     precip_probability: float
@@ -71,7 +71,7 @@ class HourlyForecast(base.BaseWeather):
 
 class DailyForecastItem(base.AutoInit):
     time: datetime
-    summary: str
+    summary: str = None
     icon: str
     sunrise_time: datetime
     sunset_time: datetime
@@ -156,13 +156,7 @@ class Forecast(object):
         self.hourly = HourlyForecast(timezone=timezone, **hourly)
         self.daily = DailyForecast(timezone=timezone, **daily)
 
-        self.alerts = []
-        for item in (alerts or []):
-            item['timezone'] = timezone
-            self.alerts.append(
-                Alert(**item)
-            )
-
+        self.alerts = [Alert(timezone=timezone, **alert) for alert in (alerts or [])]
         self.flags = Flags(timezone=timezone, **flags)
 
         self.offset = offset

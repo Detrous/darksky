@@ -40,7 +40,8 @@ forecast = darksky.get_forecast(
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
     units=units.AUTO, # default `auto`
-    exclude=[weather.MINUTELY, weather.ALERTS] # default `[]`
+    exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
+    timezone='UTC' # default None - will be set by DarkSky API automatically
 )
 
 # Asynchronous way
@@ -58,7 +59,8 @@ forecast = await darksky.get_forecast(
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
     units=units.AUTO, # default `auto`
-    exclude=[weather.MINUTELY, weather.ALERTS] # default `[]`
+    exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`
+    timezone='UTC' # default None - will be set by DarkSky API automatically
 )
 
 # Final wrapper identical for both ways

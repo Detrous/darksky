@@ -1,5 +1,6 @@
-import mock
 import copy
+
+import mock
 
 from .data import DATA
 

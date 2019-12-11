@@ -1,9 +1,9 @@
-from typing import List
 from datetime import datetime
+from typing import List
 
 from . import base
-from .utils import get_datetime_from_unix
 from .types import languages, units, weather
+from .utils import get_datetime_from_unix
 
 
 class CurrentlyForecast(base.AutoInit):
@@ -125,6 +125,7 @@ class Alert(base.AutoInit):
     description: str
     uri: str
 
+
 class Flags(base.AutoInit):
     sources: List[str]
     sources_class = str
@@ -144,9 +145,19 @@ class Forecast(object):
     flags: Flags
     offset: int
 
-    def __init__(self, latitude: float, longitude: float, timezone: str,
-        currently: dict={}, minutely: dict={}, hourly: dict={},
-        daily: dict={}, alerts: [dict]=None, flags: dict={}, offset: int=None):
+    def __init__(
+        self,
+        latitude: float,
+        longitude: float,
+        timezone: str,
+        currently: dict = {},
+        minutely: dict = {},
+        hourly: dict = {},
+        daily: dict = {},
+        alerts: [dict] = None,
+        flags: dict = {},
+        offset: int = None,
+    ):
         self.latitude = latitude
         self.longitude = longitude
         self.timezone = timezone

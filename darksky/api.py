@@ -13,7 +13,7 @@ from .types import languages, units, weather
 class BaseDarkSky(object):
     HOST = "https://api.darksky.net/forecast"
 
-    def __init__(self, api_key: str, timezone: str = "UTC"):
+    def __init__(self, api_key: str):
         self.api_key: str = api_key
         self.request_manager: BaseRequestManger = None
 
@@ -48,7 +48,7 @@ class BaseDarkSky(object):
                 latitude=latitude,
                 longitude=longitude,
             )
-        else: 
+        else:
             return "{host}/{api_key}/{latitude},{longitude},{time}".format(
                 api_key=self.api_key,
                 host=self.HOST,
@@ -59,7 +59,6 @@ class BaseDarkSky(object):
 
 
 class DarkSky(BaseDarkSky):
-
     def __init__(self, api_key: str, gzip: bool = True):
         super().__init__(api_key)
         self.request_manager = RequestManger(gzip)
@@ -72,6 +71,7 @@ class DarkSky(BaseDarkSky):
         lang=languages.ENGLISH,
         units=units.AUTO,
         exclude: [weather] = None,
+        timezone: str = None,
     ):
         url = self.get_url(latitude, longitude)
         data = self.request_manager.make_request(
@@ -80,6 +80,7 @@ class DarkSky(BaseDarkSky):
             lang=lang,
             units=units,
             exclude=exclude,
+            timezone=timezone,
         )
         return Forecast(**data)
 
@@ -92,6 +93,7 @@ class DarkSky(BaseDarkSky):
         lang=languages.ENGLISH,
         units=units.AUTO,
         exclude: [weather] = None,
+        timezone: str = None,
     ):
         url = self.get_url(latitude, longitude, int(time.timestamp()))
         data = self.request_manager.make_request(
@@ -100,6 +102,7 @@ class DarkSky(BaseDarkSky):
             lang=lang,
             units=units,
             exclude=exclude,
+            timezone=timezone,
         )
         return Forecast(**data)
 
@@ -124,6 +127,7 @@ class DarkSkyAsync(BaseDarkSky):
         lang=languages.ENGLISH,
         units=units.AUTO,
         exclude: [weather] = None,
+        timezone: str = None,
     ):
         url = self.get_url(latitude, longitude)
         data = await self.request_manager.make_request(
@@ -132,6 +136,7 @@ class DarkSkyAsync(BaseDarkSky):
             lang=lang,
             units=units,
             exclude=exclude,
+            timezone=timezone,
         )
         return Forecast(**data)
 
@@ -144,6 +149,7 @@ class DarkSkyAsync(BaseDarkSky):
         lang=languages.ENGLISH,
         units=units.AUTO,
         exclude: [weather] = None,
+        timezone: str = None,
     ):
         url = self.get_url(latitude, longitude, int(time.timestamp()))
         data = await self.request_manager.make_request(
@@ -152,5 +158,6 @@ class DarkSkyAsync(BaseDarkSky):
             lang=lang,
             units=units,
             exclude=exclude,
+            timezone=timezone,
         )
         return Forecast(**data)

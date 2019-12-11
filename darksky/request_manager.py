@@ -22,6 +22,7 @@ class RequestManger(BaseRequestManger):
         response = self.session.get(url, params=params).json()
         if "error" in response:
             raise DarkSkyException(response["code"], response["error"])
+        response["timezone"] = params.get("timezone") or response["timezone"]
         return response
 
 
@@ -45,4 +46,5 @@ class RequestMangerAsync(BaseRequestManger):
             response = await resp.json()
             if "error" in response:
                 raise DarkSkyException(response["code"], response["error"])
+        response["timezone"] = params.get("timezone") or response["timezone"]
         return response

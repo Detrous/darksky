@@ -2,7 +2,7 @@ import os
 
 from setuptools import find_packages, setup
 
-__version__ = "1.6.1"
+__version__ = "1.6.2"
 
 
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "README.md")) as f:
@@ -18,8 +18,8 @@ setup(
     long_description="View on github",
     author="Detrous",
     author_email="detrous@protonmail.com",
-    url="https://github.com/Detrous/darksky_weather",
-    download_url="https://github.com/Detrous/darksky_weather/archive/%s.tar.gz"
+    url="https://github.com/Detrous/darksky",
+    download_url="https://github.com/Detrous/darksky/archive/%s.tar.gz"
     % __version__,
     license="GPLv3 License",
     classifiers=[

@@ -16,6 +16,7 @@ class CurrentlyForecast(base.AutoInit):
     precip_intensity_error: float
     precip_probability: float
     precip_type: str
+    precipAccumulation: float
     temperature: float
     apparent_temperature: float
     dew_point: float
@@ -50,6 +51,7 @@ class HourlyForecastItem(base.AutoInit):
     precip_intensity: float
     precip_probability: float
     precip_type: str
+    precipAccumulation: float
     temperature: float
     apparent_temperature: float
     dew_point: float
@@ -81,6 +83,7 @@ class DailyForecastItem(base.AutoInit):
     precip_intensity_max_time: datetime
     precip_probability: float
     precip_type: str
+    precipAccumulation: float
     temperature_high: float
     temperature_high_time: datetime
     temperature_low: float

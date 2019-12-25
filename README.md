@@ -44,6 +44,25 @@ forecast = darksky.get_forecast(
     timezone='UTC' # default None - will be set by DarkSky API automatically
 )
 
+# Synchronous way Time Machine 
+
+from datetime import datetime as dt
+
+darksky = DarkSky(API_KEY)
+t = dt(2018, 5, 6, 12)
+
+latitude = 42.3601
+longitude = -71.0589
+forecast = darksky.get_forecast(
+    latitude, longitude,
+    extend=False, # default `False`
+    lang=languages.ENGLISH, # default `ENGLISH`
+    units=units.AUTO, # default `auto`
+    exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
+    timezone='UTC', # default None - will be set by DarkSky API automatically
+    time=t
+)
+
 # Asynchronous way
 # NOTE! On Mac os you will have problem with ssl checking https://github.com/aio-libs/aiohttp/issues/2822
 # So you need to create your own session with disabled ssl verify and pass it into the DarkSkyAsync

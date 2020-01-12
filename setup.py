@@ -2,7 +2,7 @@ import os
 
 from setuptools import find_packages, setup
 
-__version__ = "1.6.3"
+__version__ = "1.6.4"
 
 
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "README.md")) as f:

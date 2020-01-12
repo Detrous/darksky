@@ -1,4 +1,7 @@
-DarkSky [![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/master.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/master)
+DarkSky 
+
+[![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/master.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/master) [![CircleCI](https://codecov.io/gh/detrous/darksky/branch/master/graph/badge.svg)](https://codecov.io/gh/detrous/darksky/tree/master)
+
 ==========
 
 This  library for the [Dark Sky
@@ -42,6 +45,25 @@ forecast = darksky.get_forecast(
     units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
     timezone='UTC' # default None - will be set by DarkSky API automatically
+)
+
+# Synchronous way Time Machine 
+
+from datetime import datetime as dt
+
+darksky = DarkSky(API_KEY)
+t = dt(2018, 5, 6, 12)
+
+latitude = 42.3601
+longitude = -71.0589
+forecast = darksky.get_forecast(
+    latitude, longitude,
+    extend=False, # default `False`
+    lang=languages.ENGLISH, # default `ENGLISH`
+    units=units.AUTO, # default `auto`
+    exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
+    timezone='UTC', # default None - will be set by DarkSky API automatically
+    time=t
 )
 
 # Asynchronous way

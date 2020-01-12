@@ -1,4 +1,6 @@
-DarkSky [![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/develop.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/develop) [![CircleCI](https://codecov.io/gh/detrous/darksky/branch/develop/graph/badge.svg)](https://codecov.io/gh/detrous/darksky)
+DarkSky 
+
+[![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/develop.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/develop) [![CircleCI](https://codecov.io/gh/detrous/darksky/branch/develop/graph/badge.svg)](https://codecov.io/gh/detrous/darksky)
 
 ==========
 

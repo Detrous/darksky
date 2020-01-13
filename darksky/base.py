@@ -1,7 +1,8 @@
-import pytz
 from datetime import datetime
 
-from .utils import undo_snake_case_key, get_datetime_from_unix
+import pytz
+
+from .utils import get_datetime_from_unix, undo_snake_case_key
 
 
 class BaseWeather(object):

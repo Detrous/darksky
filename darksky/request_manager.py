@@ -1,10 +1,10 @@
-import aiohttp
 import requests
+from aiohttp import ClientSession
 
 from .exceptions import DarkSkyException
 
 
-class BaseRequestManger(object):
+class BaseRequestManger:
     def __init__(self, gzip: bool):
         self.headers = {} if not gzip else {"Accept-Encoding": "gzip"}
 
@@ -27,13 +27,13 @@ class RequestManger(BaseRequestManger):
 
 
 class RequestMangerAsync(BaseRequestManger):
-    def __init__(self, gzip: bool, client_session: aiohttp.ClientSession = None):
+    def __init__(self, gzip: bool, client_session: ClientSession = None):
         super().__init__(gzip)
         assert (
-            isinstance(client_session, aiohttp.ClientSession) or client_session is None
+            isinstance(client_session, ClientSession) or client_session is None
         )
         self.session = (
-            aiohttp.ClientSession() if client_session is None else client_session
+            ClientSession() if client_session is None else client_session
         )
 
     async def make_request(self, url: str, **params):
@@ -42,7 +42,11 @@ class RequestMangerAsync(BaseRequestManger):
             if params[key] is None:
                 del params[key]
 
-        async with self.session.get(url, params=params, headers=self.headers) as resp:
+        async with self.session.get(
+            url,
+            params=params,
+            headers=self.headers
+        ) as resp:
             response = await resp.json()
             if "error" in response:
                 raise DarkSkyException(response["code"], response["error"])

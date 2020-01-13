@@ -5,10 +5,12 @@ from setuptools import find_packages, setup
 __version__ = "1.6.5"
 
 
-with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "README.md")) as f:
+with open(os.path.join(
+        os.path.abspath(os.path.dirname(__file__)), "README.md")
+) as f:
     README = f.read()
 
-
+repo_url = "https://github.com/Detrous/darksky"
 setup(
     version=__version__,
     name="darksky_weather",
@@ -18,8 +20,8 @@ setup(
     long_description="View on github",
     author="Detrous",
     author_email="detrous@protonmail.com",
-    url="https://github.com/Detrous/darksky",
-    download_url="https://github.com/Detrous/darksky/archive/%s.tar.gz" % __version__,
+    url=repo_url,
+    download_url=f"{repo_url}/archive/{__version__}.tar.gz",
     license="GPLv3 License",
     classifiers=[
         "Environment :: Web Environment",

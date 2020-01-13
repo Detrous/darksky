@@ -1,11 +1,9 @@
 import copy
 
-import mock
-
 from .data import DATA
 
 
-class MockSession(object):
+class MockSession:
     def __init__(self):
         self.headers = {}
         self.auth = None
@@ -14,5 +12,5 @@ class MockSession(object):
     def get(self, url, params=None):
         return self
 
-    def json(self):
+    def json(self):  # pylint: disable=R0201
         return copy.deepcopy(DATA)

@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 def snake_case_key(key: str) -> str:
     assert isinstance(key, str)
     new_key = key[0]

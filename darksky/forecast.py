@@ -2,8 +2,6 @@ from datetime import datetime
 from typing import List
 
 from . import base
-from .types import languages, units, weather
-from .utils import get_datetime_from_unix
 
 
 class CurrentlyForecast(base.AutoInit):

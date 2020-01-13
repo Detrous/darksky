@@ -1,9 +1,7 @@
 from datetime import datetime
 
 import aiohttp
-import requests
 
-from .exceptions import DarkSkyException
 from .forecast import Forecast
 from .request_manager import (BaseRequestManger, RequestManger,
                               RequestMangerAsync)

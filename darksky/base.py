@@ -16,6 +16,9 @@ class BaseWeather(object):
         assert self.data_class is not None
         self.data = [self.data_class(timezone=timezone, **item) for item in (data or [])]
 
+    def __repr__(self):
+        return '%s([%d])' % (self.__class__.__name__, len(self.data))
+
 
 class AutoInit(object):
     def __init__(self, **params):
@@ -34,3 +37,6 @@ class AutoInit(object):
                 setattr(self, field, params.get(api_field))
             else:
                 setattr(self, field, None)
+
+    def __repr__(self):
+        return '%s(%s)' % (self.__class__.__name__, getattr(self, 'time', ''))

@@ -20,9 +20,13 @@ class BaseWeather:
 
     def __repr__(self):
         return '%s([%d])' % (self.__class__.__name__, len(self.data))
+    
+    def __iter__(self):
+        return iter(self.data)
 
 
 class AutoInit:
+
     def __init__(self, **params):
         try:
             timezone = pytz.timezone(params.pop('timezone', None))
@@ -41,6 +45,9 @@ class AutoInit:
                 setattr(self, field, params.get(api_field))
             else:
                 setattr(self, field, None)
+
+    def __iter__(self):
+        return iter(self.__dict__.items())
 
     def __repr__(self):
         return '%s(%s)' % (self.__class__.__name__, getattr(self, 'time', ''))

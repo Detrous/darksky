@@ -55,7 +55,7 @@ t = dt(2018, 5, 6, 12)
 
 latitude = 42.3601
 longitude = -71.0589
-forecast = darksky.get_forecast(
+forecast = darksky.get_time_machine_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`

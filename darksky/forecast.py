@@ -2,8 +2,6 @@ from datetime import datetime
 from typing import List
 
 from . import base
-from .types import languages, units, weather
-from .utils import get_datetime_from_unix
 
 
 class CurrentlyForecast(base.AutoInit):
@@ -133,10 +131,11 @@ class Flags(base.AutoInit):
     sources: List[str]
     sources_class = str
     nearest__station: float
+    darksky__unavailable: bool
     units: str
 
 
-class Forecast(object):
+class Forecast:
     latitude: float
     longitude: float
     timezone: str
@@ -153,24 +152,26 @@ class Forecast(object):
         latitude: float,
         longitude: float,
         timezone: str,
-        currently: dict = {},
-        minutely: dict = {},
-        hourly: dict = {},
-        daily: dict = {},
+        currently: dict = None,
+        minutely: dict = None,
+        hourly: dict = None,
+        daily: dict = None,
         alerts: [dict] = None,
-        flags: dict = {},
+        flags: dict = None,
         offset: int = None,
     ):
         self.latitude = latitude
         self.longitude = longitude
         self.timezone = timezone
 
-        self.currently = CurrentlyForecast(timezone=timezone, **currently)
-        self.minutely = MinutelyForecast(timezone=timezone, **minutely)
-        self.hourly = HourlyForecast(timezone=timezone, **hourly)
-        self.daily = DailyForecast(timezone=timezone, **daily)
+        self.currently = CurrentlyForecast(
+            timezone=timezone, **(currently or {}))
+        self.minutely = MinutelyForecast(timezone=timezone, **(minutely or {}))
+        self.hourly = HourlyForecast(timezone=timezone, **(hourly or {}))
+        self.daily = DailyForecast(timezone=timezone, **(daily or {}))
 
-        self.alerts = [Alert(timezone=timezone, **alert) for alert in (alerts or [])]
-        self.flags = Flags(timezone=timezone, **flags)
+        self.alerts = [Alert(timezone=timezone, **alert)
+                       for alert in (alerts or [])]
+        self.flags = Flags(timezone=timezone, **(flags or {}))
 
         self.offset = offset

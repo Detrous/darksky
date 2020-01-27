@@ -7,9 +7,12 @@ import pytest
 from darksky.base import AutoInit, BaseWeather
 from darksky.utils import undo_snake_case_key
 
-sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), "..")))
-
-
+sys.path.insert(
+    0,
+    os.path.realpath(
+        os.path.join(os.path.dirname(__file__), "..")
+    )
+)
 
 
 def test_undo_snake_case_key():
@@ -28,7 +31,7 @@ def test_undo_snake_case_key_bad_value_type():
 
 
 def test_base_weather():
-    class TestDataBaseWeather(object):
+    class TestDataBaseWeather:
         def __init__(self, test_field, **kwargs):
             self.test_field = test_field
 
@@ -53,11 +56,11 @@ def test_auto_init():
     assert test_auto_init_obj.field == "data"
 
 
-def test_auto_init__field_exists_on_class_but_is_not_given_in_constructor__defaults_to_none():
+def test_auto_init__field_exists_on_class_but_is_not_given_in_constructor():
     class TestAutoInit(AutoInit):
         field: str
         other_field: int
 
     test_auto_init_obj = TestAutoInit(field="data")
     assert test_auto_init_obj.field == "data"
-    assert test_auto_init_obj.other_field == None
+    assert test_auto_init_obj.other_field is None

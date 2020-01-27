@@ -37,10 +37,12 @@ class RequestMangerAsync(BaseRequestManger):
         )
 
     async def make_request(self, url: str, **params):
-        # Fix for yarl(Doesn't support any types besides str)
-        for key in params.copy():
+        
+        for key in list(params.keys()):
             if params[key] is None:
                 del params[key]
+            elif isinstance(params[key], list):
+                params[key] = ','.join(params[key])
 
         async with self.session.get(
             url,

@@ -131,6 +131,7 @@ class Flags(base.AutoInit):
     sources: List[str]
     sources_class = str
     nearest__station: float
+    darksky__unavailable: bool
     units: str
 
 

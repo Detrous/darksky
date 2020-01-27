@@ -37,7 +37,7 @@ class RequestMangerAsync(BaseRequestManger):
         )
 
     async def make_request(self, url: str, **params):
-        
+
         for key in list(params.keys()):
             if params[key] is None:
                 del params[key]

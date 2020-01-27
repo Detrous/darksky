@@ -20,7 +20,7 @@ class BaseWeather:
 
     def __repr__(self):
         return '%s([%d])' % (self.__class__.__name__, len(self.data))
-    
+
     def __iter__(self):
         return iter(self.data)
 

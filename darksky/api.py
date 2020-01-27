@@ -71,7 +71,7 @@ class DarkSky(BaseDarkSky):
         values_units=units.AUTO,
         exclude: [weather] = None,
         timezone: str = None,
-    ):
+    ) -> Forecast:
         url = self.get_url(latitude, longitude)
         data = self.request_manager.make_request(
             url=url,
@@ -93,7 +93,7 @@ class DarkSky(BaseDarkSky):
         values_units=units.AUTO,
         exclude: [weather] = None,
         timezone: str = None,
-    ):
+    ) -> Forecast:
         url = self.get_url(latitude, longitude, int(time.timestamp()))
         data = self.request_manager.make_request(
             url=url,
@@ -127,7 +127,7 @@ class DarkSkyAsync(BaseDarkSky):
         values_units=units.AUTO,
         exclude: [weather] = None,
         timezone: str = None,
-    ):
+    ) -> Forecast:
         url = self.get_url(latitude, longitude)
         data = await self.request_manager.make_request(
             url=url,
@@ -149,7 +149,7 @@ class DarkSkyAsync(BaseDarkSky):
         values_units=units.AUTO,
         exclude: [weather] = None,
         timezone: str = None,
-    ):
+    ) -> Forecast:
         url = self.get_url(latitude, longitude, int(time.timestamp()))
         data = await self.request_manager.make_request(
             url=url,

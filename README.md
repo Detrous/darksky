@@ -41,7 +41,7 @@ forecast = darksky.get_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
-    units=units.AUTO, # default `auto`
+    value_units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
     timezone='UTC' # default None - will be set by DarkSky API automatically
 )
@@ -59,7 +59,7 @@ forecast = darksky.get_time_machine_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
-    units=units.AUTO, # default `auto`
+    value_units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
     timezone='UTC', # default None - will be set by DarkSky API automatically
     time=t
@@ -79,7 +79,7 @@ forecast = await darksky.get_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
-    units=units.AUTO, # default `auto`
+    value_units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`
     timezone='UTC' # default None - will be set by DarkSky API automatically
 )

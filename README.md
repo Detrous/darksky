@@ -104,4 +104,4 @@ You can write an Email to `detrous@protonmail.com`
 
 ### License.
 
-Library is released under the [GNU General Public License](./LICENSE).
+Library is released under the [MIT License](./LICENSE).

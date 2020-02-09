@@ -41,7 +41,7 @@ forecast = darksky.get_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
-    value_units=units.AUTO, # default `auto`
+    values_units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
     timezone='UTC' # default None - will be set by DarkSky API automatically
 )
@@ -59,7 +59,7 @@ forecast = darksky.get_time_machine_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
-    value_units=units.AUTO, # default `auto`
+    values_units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`,
     timezone='UTC', # default None - will be set by DarkSky API automatically
     time=t
@@ -67,9 +67,13 @@ forecast = darksky.get_time_machine_forecast(
 
 # Asynchronous way
 # NOTE! On Mac os you will have problem with ssl checking https://github.com/aio-libs/aiohttp/issues/2822
-# So you need to create your own session with disabled ssl verify and pass it into the DarkSkyAsync
+# So you need to create your own session with disabled ssl verify and pass it into the get_forecast
 # session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False))
-# darksky = DarkSkyAsync(API_KEY, client_session=session)
+# darksky = DarkSkyAsync(API_KEY)
+# forecast = await darksky.get_forecast(
+#     *arguments*,
+#     client_session=session
+# )
 
 darksky = DarkSkyAsync(API_KEY)
 
@@ -79,9 +83,10 @@ forecast = await darksky.get_forecast(
     latitude, longitude,
     extend=False, # default `False`
     lang=languages.ENGLISH, # default `ENGLISH`
-    value_units=units.AUTO, # default `auto`
+    values_units=units.AUTO, # default `auto`
     exclude=[weather.MINUTELY, weather.ALERTS], # default `[]`
-    timezone='UTC' # default None - will be set by DarkSky API automatically
+    timezone='UTC' # default None - will be set by DarkSky API automatically,
+    client_session=aiohttp.ClientSession() # default aiohttp.ClientSession()
 )
 
 # Final wrapper identical for both ways

@@ -142,6 +142,7 @@ disable=print-statement,
         bad-continuation,
         no-member,
         invalid-name,
+        arguments-differ,
         # todo fix
         missing-function-docstring,
         missing-module-docstring,

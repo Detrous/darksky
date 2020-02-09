@@ -45,8 +45,6 @@ def get_forecast_async():
                 DATA["longitude"]
             )
 
-        # we need to run this manually otherwise we get warnings
-        await darksky.request_manager.session.close()
         return result
 
     loop = asyncio.get_event_loop()

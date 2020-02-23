@@ -1,7 +1,7 @@
 DarkSky 
 ==========
 
-[![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/master.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/master) [![CircleCI](https://codecov.io/gh/detrous/darksky/branch/master/graph/badge.svg)](https://codecov.io/gh/detrous/darksky/tree/master)
+[![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/master.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/master) [![CircleCI](https://codecov.io/gh/detrous/darksky/branch/master/graph/badge.svg)](https://codecov.io/gh/detrous/darksky/tree/master) [![Documentation Status](https://readthedocs.org/projects/darksky/badge/?version=latest)](https://darksky.readthedocs.io/en/latest/?badge=latest)
 
 This  library for the [Dark Sky
 API](https://darksky.net/dev/docs) provides access to detailed

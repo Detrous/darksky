@@ -3,6 +3,8 @@ DarkSky
 
 [![CircleCI](https://circleci.com/gh/Detrous/darksky/tree/develop.svg?style=svg)](https://circleci.com/gh/Detrous/darksky/tree/develop) [![CircleCI](https://codecov.io/gh/detrous/darksky/branch/develop/graph/badge.svg)](https://codecov.io/gh/detrous/darksky/tree/develop)
 
+# [Dark Sky, the provider on which this repo relies, will no longer accept new signups. The API will continue to function through the end of 2021.](https://blog.darksky.net/dark-sky-has-a-new-home)
+
 This  library for the [Dark Sky
 API](https://darksky.net/dev/docs) provides access to detailed
 weather information from around the globe.

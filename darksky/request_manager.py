@@ -30,15 +30,10 @@ class RequestMangerAsync(BaseRequestManger):
     async def make_request(
         self,
         url: str,
-        client_session: ClientSession,
+        session: ClientSession,
         **params
     ):
-        assert (
-            isinstance(client_session, ClientSession) or client_session is None
-        )
-        client_session = (
-            ClientSession() if client_session is None else client_session
-        )
+        assert isinstance(session, ClientSession)
 
         for key in list(params.keys()):
             if params[key] is None:
@@ -46,12 +41,11 @@ class RequestMangerAsync(BaseRequestManger):
             elif isinstance(params[key], list):
                 params[key] = ",".join(params[key])
 
-        async with client_session as session:
-            async with session.get(
-                url, params=params, headers=self.headers
-            ) as resp:
-                response = await resp.json()
-                if "error" in response:
-                    raise DarkSkyException(response["code"], response["error"])
+        async with session.get(
+            url, params=params, headers=self.headers
+        ) as resp:
+            response = await resp.json()
+            if "error" in response:
+                raise DarkSkyException(response["code"], response["error"])
         response["timezone"] = params.get("timezone") or response["timezone"]
         return response

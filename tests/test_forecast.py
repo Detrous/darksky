@@ -5,6 +5,7 @@ import re
 import sys
 from datetime import datetime
 
+import aiohttp
 import aioresponses
 import mock
 import pytest
@@ -42,7 +43,8 @@ def get_forecast_async():
 
             result = await darksky.get_forecast(
                 DATA["latitude"],
-                DATA["longitude"]
+                DATA["longitude"],
+                client_session=aiohttp.ClientSession()
             )
 
         return result

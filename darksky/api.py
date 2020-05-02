@@ -121,12 +121,12 @@ class DarkSkyAsync(BaseDarkSky):
         self,
         latitude: float,
         longitude: float,
+        client_session: aiohttp.ClientSession,
         extend: bool = None,
         lang=languages.ENGLISH,
         values_units=units.AUTO,
         exclude: [weather] = None,
         timezone: str = None,
-        client_session: aiohttp.ClientSession = None
     ) -> Forecast:
         url = self.get_url(latitude, longitude)
         data = await self.request_manager.make_request(
@@ -136,7 +136,7 @@ class DarkSkyAsync(BaseDarkSky):
             units=values_units,
             exclude=exclude,
             timezone=timezone,
-            client_session=client_session,
+            session=client_session,
         )
         return Forecast(**data)
 
@@ -145,12 +145,12 @@ class DarkSkyAsync(BaseDarkSky):
         latitude: float,
         longitude: float,
         time: datetime,
+        client_session: aiohttp.ClientSession,
         extend: bool = False,
         lang=languages.ENGLISH,
         values_units=units.AUTO,
         exclude: [weather] = None,
-        timezone: str = None,
-        client_session: aiohttp.ClientSession = None
+        timezone: str = None
     ) -> Forecast:
         url = self.get_url(latitude, longitude, int(time.timestamp()))
         data = await self.request_manager.make_request(
@@ -160,6 +160,6 @@ class DarkSkyAsync(BaseDarkSky):
             units=values_units,
             exclude=exclude,
             timezone=timezone,
-            client_session=client_session,
+            session=client_session,
         )
         return Forecast(**data)
